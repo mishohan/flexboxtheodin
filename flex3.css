@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    border: 4px solid brown;
+    padding: 12px;
+    background-color: aqua;
+}
+
+.item{
+    height: 48px;
+    border: 4px solid salmon;
+    margin: 4px;
+    background-color: peachpuff;
+    flex: 1; /* flex is a shorthand for 1. flex-grow
+                                        2. flex-shrink
+                                        3. flex-basis
+                flex: 1; equates to: flex-grow: 1;
+                                     flex-shrink: 1;
+                                     flex-basis: 0%;
+                it also can be written as, flex: 1 1 0%;
+                flex: 1 applied to flex-grow: 1;
+              */
+  
+
+}
