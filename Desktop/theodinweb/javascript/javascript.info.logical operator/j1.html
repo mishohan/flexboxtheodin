@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Operator</title>
+</head>
+<body>
+    <Script>
+
+        //--OR ; if anyone of the argument is true then outputs true 
+        
+        //ex1
+        let hour = 9;
+        let isWeekend = true;
+        if( hour < 10 || hour > 18 || isWeekend) {
+            alert('The office is closed.');
+        }
+
+        //ex2
+        alert( 1 || 0 ); // 1 (1 is truthy)
+        alert( null || 1 ); // 1 (1 is the first truthy value)
+        alert( null || 0 || 1 ); // 1 (the first truthy value)
+        alert( undefined || null || 0 ); // 0 (all falsy, returns the last value)
+        /*OR always returns the first truthy value or the last one if no truthy value is found.*/
+
+        //ex3
+        let firstName = "";
+        let lastName = "";
+        let nickName = "SuperCoder";
+        alert(firstName || lastName || nickName || "Anonymous"); //SuperCoder,,, cause it's the first truthy value, if all of them were false then "Anonymous" would show up
+
+        //ex4 - Short-circuit evaluation
+        true || alert("not printed");
+        false || alert("printed");  //printed
+        //In the first line, the OR || operator stops the evaluation immediately upon seeing true, so the alert isn’t run.
+
+
+
+        //--AND ; if any of the argument is false, then the result is false
+        
+        //ex1
+        alert( true && true );   // true
+        alert( false && true );  // false
+        alert( true && false );  // false
+        alert( false && false ); // false
+
+        //ex2
+        let hours = 12;
+        let minutes = 30;
+
+        if(hour == 12 && minute == 30) {
+            alert('The time is 12:30');
+        }
+
+        //ex3
+        //AND  returns the first flasy value or the last value if none were found.
+        //if the first operand is truthy, AND retruns the second operand.
+        alert( 1 && 0); // 0
+        alert( 1 && 5); //5
+
+        //if the first operand is falsy, AND returns it. Ignoring the second;
+        alert( null && 5); //null
+        alert( 0 && "no matter what"); // 0
+
+        alert( 1 && 2 && null && 3); //null
+        alert( 1 && 2 && 3); // the last one, 3
+
+        //Precedence of AND && is higher than OR ||
+        // a && b || c && d is same as (a && b) || (c && d)
+
+
+
+        //--NOT
+
+        //ex1
+        //converts operand to boolean type: true/false, returns the inverse
+        alert( !true); //false
+        alert( !0 ); //true
+
+        //ex2
+        alert(!!"non-empty string"); //true
+        alert( !!null); //false
+        //here the first ! converts the value to boolean and returns the inverse, and the second ! inverse it again. In the end, we have a plain value-to-boolean coversion.
+
+        //alternatively and more verbose way to do the same thing- a built-in Boolean function:
+        alert(Boolean("non-empty string")); //true
+        alert(Boolean(null));
+
+
+
+
+        //Tasks
+
+        //ex1
+        alert( alert(1) || 2 || alert(3) ); // first 1, then 2
+        /*The call to alert does not return a value. Or, in other words, it returns undefined.
+        The first OR || evaluates its left operand alert(1). That shows the first message with 1.
+        The alert returns undefined, so OR goes on to the second operand searching for a truthy value.
+        The second operand 2 is truthy, so the execution is halted, 2 is returned and then shown by the outer alert.
+        There will be no 3, because the evaluation does not reach alert(3)*/
+
+        //ex2
+        alert(null || 2 || undefined); //2
+
+        //ex3
+        alert( 1 && null && 2); //null
+
+        //ex4 
+        alert( alert(1) && alert(2)); //1, undefined
+        /*The call to alert returns undefined (it just shows a message, so there’s no meaningful return).
+        Because of that, && evaluates the left operand (outputs 1), and immediately stops, because undefined is a falsy value. 
+        And && looks for a falsy value and returns it, so it’s done.*/
+
+        //ex5
+        alert( null || 2 && 3 || 4);
+        /*The precedence of AND && is higher than ||, so it executes first.
+        The result of 2 && 3 = 3, so the expression becomes:
+        null || 3 || 4
+        Now, the result is the first truthy value: 3.*/
+
+        //ex6 
+        //whether the expresion runs or not.
+        if (-1 || 0) alert( 'first' ); // Runs. The result of -1 || 0 = -1, truthy
+
+        if (-1 && 0) alert( 'second' ); // Doesn't run. -1 && 0 = 0, falsy
+
+        if (null || -1 && 1) alert( 'third' ); // Executes. Operator && has a higher precedence than ||
+                                               // so -1 && 1 executes first, giving us the chain:
+                                               // null || -1 && 1  ->  null || 1  ->  1
+
+        
+    </Script>
+</body>
+</html>
